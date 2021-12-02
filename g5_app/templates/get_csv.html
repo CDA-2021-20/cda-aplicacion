@@ -1,0 +1,23 @@
+{% extends 'generator/base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+    <div class="container">
+        <h1>Cargar datos del paciente</h1>
+        <form enctype="multipart/form-data" method="POST" action="">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">
+                Enviar Datos
+            </button>
+        </form>
+    </div>
+    <div class="container">
+        <br>
+        <a href="{% url 'home' %}">Regresar al inicio</a>
+    </div>
+
+{% endblock %}
+

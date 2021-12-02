@@ -1,0 +1,29 @@
+{% extends 'generator/base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="container text-center">
+        <h1>Modelo para la predicción de problemas cardiacos</h1>
+    </div>
+    <div class="container text-center">
+        <img src="{% static 'img/heart_disease_home.png' %}" class="img-fluid" style="width: 15%">
+    </div>
+    <div>
+        <p></p>
+    </div>
+    <br>
+    <div>
+        <h3>Pasos para usar la aplicación</h3>
+        <ul class="list-group">
+            <li class="list-group-item">La información del paciente debe venir en formato CSV y no debe tener campos vacíos.</li>
+            <li class="list-group-item">Una vez haya preparado el archivo diríjase al enlace de carga "cargar datos".</li>
+            <li class="list-group-item">Seleccione el archivo y haga clic en el botón "Enviar datos". </li>
+            <li class="list-group-item">Aparecerá el resultado en la columna "Diagnóstico".</li>
+            <li class="list-group-item">Se pueden ver los diferentes valores de probabilidad de acuerdo con el modelo usado</li>
+        </ul>
+    </div>
+    <br>
+    <div>
+        <a href="{% url 'heart' %}">Cargar datos</a>
+    </div>
+{% endblock %}

@@ -19,9 +19,14 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 from g5_app.views import image_upload
+from g5_app import views
 
 urlpatterns = [
-    path("", image_upload, name="g5_app"),
+    path('', views.Home, name='home'),
+    #path("", image_upload, name="g5_app"),
+    path('charts/', views.Charts.as_view(), name='charts'),
+    path('tables/', views.Tables.as_view(), name='tables'),
+    path('heart/', views.CsvFormView.as_view(), name='heart'),
     path('admin/', admin.site.urls),
 ]
 

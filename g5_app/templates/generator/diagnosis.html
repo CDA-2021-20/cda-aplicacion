@@ -1,0 +1,60 @@
+{% extends 'generator/base.html' %}
+
+{% block content %}
+
+    <div class="container">
+        <h2 class="text-center">Resultado del Análisis</h2><br>
+        <table class="table table-dark table-striped">
+            <thead>
+            <tr>
+                <th>Edad</th>
+                <th>Sexo</th>
+                <th>Dolor en el pecho</th>
+                <th>Presión Sanguínea</th>
+                <th>Colesterol</th>
+                <th>Diagnóstico</th>
+                <th>SVM Predict</th>
+                <th>SVM Prob</th>
+                <th>XGBoost predict</th>
+                <th>XGBoost Prob</th>
+                <th>MLP predict</th>
+                <th>R. Forest predict</th>
+                <th>R. forest Prob</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!-- jinja2 Technique -->
+            {% if d %}
+                {% for i in d %}
+                    <tr>
+                        <td>{{ i.age }} años</td>
+                        {% if i.sex == 1%}
+                            <td>Hombre</td>
+                        {% else %}
+                            <td>Mujer</td>
+                        {% endif %}
+                        <td>{{ i.cp }}</td>
+                        <td>{{ i.trestbps }}</td>
+                        <td>{{ i.chol }}</td>
+                        {% if i.the_diagnosis == 1 %}
+                            <td>Alto riesgo de morir</td>
+                        {% else %}
+                            <td>Bajo riesgo de morir</td>
+                        {% endif %}
+                        <td>{{ i.the_diagnosis }}</td>
+                        <td>{{ i.svm_probability_true }}</td>
+                        <td>{{ i.xgb_diagnosis }}</td>
+                        <td>{{ i.xgb_probability_true }}</td>
+                        <td>{{ i.mlp_diagnosis }}</td>
+                        <td>{{ i.ranf_diagnosis }}</td>
+                        <td>{{ i.ranf_probability_true }}</td>
+
+                    </tr>
+                {% endfor %}
+            {% endif %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}
+
