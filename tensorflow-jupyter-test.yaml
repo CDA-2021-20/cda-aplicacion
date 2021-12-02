@@ -1,0 +1,14 @@
+version: "3.8"
+services:
+  tensorflow_jupyter:
+    image: tensorflow/tensorflow:2.7.0-jupyter
+    ports:
+      - "3000:8888"
+    # Red
+    networks:
+      - red_interna
+
+# Redes
+networks:
+  red_interna:
+    name: "tensorflow-jupyter-test"
