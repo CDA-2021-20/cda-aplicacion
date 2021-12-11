@@ -13,13 +13,10 @@
                 <th>Presión Sanguínea</th>
                 <th>Colesterol</th>
                 <th>Diagnóstico</th>
-                <th>SVM Predict</th>
-                <th>SVM Prob</th>
-                <th>XGBoost predict</th>
-                <th>XGBoost Prob</th>
                 <th>MLP predict</th>
-                <th>R. Forest predict</th>
-                <th>R. forest Prob</th>
+		<th>SVM predict</th>
+		<th>XGBoost predict</th>
+		<th>Random Forest predict</th>
             </tr>
             </thead>
             <tbody>
@@ -36,18 +33,15 @@
                         <td>{{ i.cp }}</td>
                         <td>{{ i.trestbps }}</td>
                         <td>{{ i.chol }}</td>
-                        {% if i.the_diagnosis == 1 %}
-                            <td>Alto riesgo de morir</td>
+			{% if i.mlp_diagnosis >= 0.5 %}
+                            <td>Alto riesgo de sufrir ataque cardiaco</td>
                         {% else %}
-                            <td>Bajo riesgo de morir</td>
+                            <td>Bajo riesgo de sufrir ataque cardiaco</td>
                         {% endif %}
-                        <td>{{ i.the_diagnosis }}</td>
-                        <td>{{ i.svm_probability_true }}</td>
-                        <td>{{ i.xgb_diagnosis }}</td>
-                        <td>{{ i.xgb_probability_true }}</td>
                         <td>{{ i.mlp_diagnosis }}</td>
-                        <td>{{ i.ranf_diagnosis }}</td>
-                        <td>{{ i.ranf_probability_true }}</td>
+			<td>{{ i.the_diagnosis}}</td>
+			<td>{{ i.xgb_diagnosis}}</td>
+			<td>{{ i.ranf_diagnosis}}</td>
 
                     </tr>
                 {% endfor %}
